@@ -32,6 +32,10 @@ var drawDomDebug = true;
 var poseDebugDraw = true;
 
 
+// use the most centered pose for prediction and training 
+useMostCenteredPose = true;
+
+
 // video input container 
 var video;
 
@@ -210,9 +214,12 @@ function draw() {
   
   //if there are poses available 
   if( poses.length > 0) {    
-   if(drawDomDebug)document.getElementById("debug1").innerHTML = "poses detected: " + poses.length;
-    selectedPosId = getCenterPos();  
-    
+    if(drawDomDebug)document.getElementById("debug1").innerHTML = "poses detected: " + poses.length;
+    if(useMostCenteredPose) {
+      selectedPosId = getCenterPos();  
+    } else {
+      selectedPosId = 0;
+    }
     drawSelectedPose(selectedPosId);
     if(poseDebugDraw)drawOtherPoses(selectedPosId);
     
