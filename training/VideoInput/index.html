@@ -1,7 +1,29 @@
+<!--
+
+/* LEARNING FROM MACHINES - EXAMPLE CODE 
+ * --------------------------------------
+ *
+ * Code Snippets created during the Intelligence of SiIly Walks project 
+ * by CIRG (https://cirg.io) and Space10 (https://space10.io/)
+ *  
+ * Project URL:
+ * Code Snippet Repository:  
+ *  
+ * Example Using openPosNet and ml5.js in p5.js 
+ * Based on ml5.js examples: https://github.com/ml5js/ml5-examples  
+ *  
+ * -------------------------------------
+ *
+ * This Example is training poses into KNN-Classifier Classes with Videoflie as input
+ * 
+ */
+
+-->
+
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>IoSW</title>
+  <title>training Poses with Video Input</title>
   
   <link rel="stylesheet" type="text/css" href="css/style.css" />
  
@@ -22,20 +44,12 @@
 
   <!-- trainings View-->
   <div id="trainingDiv">
-
-  <!--- Trainings view - will be removed soon -->
-  <div  class="trainingsView" ><b> video Training </b><br /><br /></div>
-
-  <!-- <button class="trainingsView debugButton" onclick="startVideoTrainging('videoTrainingFiles/01.mp4', 'A')">01</button>
-  <button class="trainingsView debugButton" onclick="startVideoTrainging('videoTrainingFiles/02.mp4', 'B')">02</button>
-  <button class="trainingsView debugButton" onclick="startVideoTrainging('videoTrainingFiles/03.mp4', 'C')">03</button>
-  <button class="trainingsView debugButton" onclick="startVideoTrainging('videoTrainingFiles/04.mp4', 'D')">04</button>
-  <button class="trainingsView debugButton" onclick="startVideoTrainging('videoTrainingFiles/05.mp4', 'E')">05</button>
-  <button class="trainingsView debugButton" onclick="startVideoTrainging('videoTrainingFiles/z1.mp4', 'Z')">z1</button>
-  <button class="trainingsView debugButton" onclick="startVideoTrainging('videoTrainingFiles/z2.mp4', 'Z')">z2</button>
+  
   <br />
-  -->
-
+  <br />
+  
+  <!-- elements to select video file -->
+  <div  class="trainingsView" ><b> select video and class to train </b><br /><br /></div>
   <select id="trainingVideoClass">
     <option value="0" selected="selected">Z</option>
     <option value="1">A</option>
@@ -52,90 +66,70 @@
   <button class="trainingsView debugButton" onclick="startVideoTraingingFormPrevDefinedVid()">start training from Video</button>
   <br />
   <br />  
+  <br />  
 
-  <select id="overlayClass">
-    <option value="0" selected="selected">Z</option>
-    <option value="1">A</option>
-    <option value="2">B</option>
-    <option value="3">C</option>
-    <option value="4">D</option>
-    <option value="5">E</option>
-    <option value="6">F</option>
-    <option value="7">G</option>
-  </select>
-  <button class="trainingsView debugButton" onclick="showOverlayForTraining()">show Overlay</button>
 
+  <!-- samples in each class and confidence in prediction (while running the prediction) -->
+  <div  class="trainingsView" ><b> trainings overview for each class </b></div>
   <br />
-  <br>
-  <div class="trainingsView">
-    <button id="addClassA" class="debugButton" onclick="addExample(classId[1]);">add example to class A</button>
-    <button id="resetA" class="debugButton" onclick="clearLabel(classId[1])">reset class A</button>
-    <br />
-    <p><span id="exampleA">0</span> A examples</p>
-    <p>| Confidence in A is: <span id="confidenceA">0</span></p>
-    <br />
-    <button id="addClassB" class="debugButton" onclick="addExample(classId[2]);">add example to class B</button>
-    <button id="resetB" class="debugButton" onclick="clearLabel('D')">reset class B</button>
-    <br />
-    <p><span id="exampleB">0</span> B examples</p>
-    <p>| Confidence in B is: <span id="confidenceB">0</span></p>
-    <br />
-    <button id="addClassC" class="debugButton" onclick="addExample(classId[3]);">add example to class C</button>
-    <button id="resetC" class="debugButton" onclick="clearLabel('C')">reset class C</button>
-    <br />
-    <p><span id="exampleC">0</span> C examples</p>
-    <p>| Confidence in C is: <span id="confidenceC">0</span></p>
-    <br />
-    <button id="addClassD" class="debugButton" onclick="addExample(classId[4]);">add example to class D</button>
-    <button id="resetD" class="debugButton" onclick="clearLabel('D')">reset class D</button>
-    <br />
-    <p><span id="exampleD">0</span> D examples</p>
-    <p>| Confidence in D is: <span id="confidenceD">0</span></p>
-    <br />
-    <button id="addClassE" class="debugButton" onclick="addExample(classId[5]);">add example to class E</button>
-    <button id="resetE" class="debugButton" onclick="clearLabel('E')">reset class B</button>
-    <br />
-    <p><span id="exampleE">0</span> E examples</p>
-    <p>| Confidence in E is: <span id="confidenceE">0</span></p>
-    <br />
-    <button id="addClassF" class="debugButton" onclick="addExample(classId[6]);">add example to class F</button>
-    <button id="resetF" class="debugButton" onclick="clearLabel('F')">reset class F</button>
-    <br />
-    <p><span id="exampleF">0</span> F examples</p>
-    <p>| Confidence in F is: <span id="confidenceF">0</span></p>
-    <br />
-    <button id="addClassG" class="debugButton" onclick="addExample(classId[7]);">add example to class G</button>
-    <button id="resetG" class="debugButton" onclick="clearLabel('G')">reset class G</button>
-    <br />
-    <p><span id="exampleG">0</span> G examples</p>
-    <p>| Confidence in G is: <span id="confidenceG">0</span></p>
-    <br />
-    <button id="addClassZ" class="debugButton" onclick="addExample(classId[0]);">add example to class Z</button>
-    <button id="resetZ" class="debugButton" onclick="clearLabel('Z')">reset class Z</button>
-    <br />
-    <p><span id="exampleZ">0</span> Z examples</p>
-    <p>| Confidence in Z is: <span id="confidenceZ">0</span></p>
-    <br/><br/>
-    <p>
-      <button id="webcam"  class="trainingsView debugButton" onclick="reInitCamera()">restart cam</button>
-      <button id="buttonPredict" class="debugButton" onclick="startPrediction()">start predicting</button><br>
-      <button id="clearAll" class="debugButton" onclick="clearAllLabels()">clear all classes</button><br>
-    </p>
-    <br /><br />
-    <p>
-      <button class="debugButton" onclick="saveModel()">save</button>
-      <button id="load" class="debugButton" onclick="loadDataset('model')">Load Dataset</button>
-      <br>
-    </p>
-  </div>
+  <p><span id="exampleA">0</span> A examples</p>
+  <p>| Confidence in A is: <span id="confidenceA">0</span></p>
+  <br />
+  <br />
+  <p><span id="exampleB">0</span> B examples</p>
+  <p>| Confidence in B is: <span id="confidenceB">0</span></p>
+  <br />
+  <br />
+  <p><span id="exampleC">0</span> C examples</p>
+  <p>| Confidence in C is: <span id="confidenceC">0</span></p>
+  <br />
+  <br />
+  <p><span id="exampleD">0</span> D examples</p>
+  <p>| Confidence in D is: <span id="confidenceD">0</span></p>
+  <br />
+  <br />
+  <p><span id="exampleE">0</span> E examples</p>
+  <p>| Confidence in E is: <span id="confidenceE">0</span></p>
+  <br />
+  <br />
+  <p><span id="exampleF">0</span> F examples</p>
+  <p>| Confidence in F is: <span id="confidenceF">0</span></p>
+  <br />
+  <br />
+  <p><span id="exampleG">0</span> G examples</p>
+  <p>| Confidence in G is: <span id="confidenceG">0</span></p>
+  <br />
+  <br />
+  <p><span id="exampleZ">0</span> Z examples</p>
+  <p>| Confidence in Z is: <span id="confidenceZ">0</span></p>
+  <br/>
+  <br/>
+  <br/>
+
+
+
+  <!-- restart camera and preiction to test your just created model or a loaded model -->
+  <div  class="trainingsView" ><b> test the prediction model </b></div>
+  <p>
+    <button id="webcam"  class="trainingsView debugButton" onclick="reInitCamera()">restart cam</button>
+    <button id="buttonPredict" class="debugButton" onclick="startPrediction()">start predicting</button><br>
+    <button id="clearAll" class="debugButton" onclick="clearAllLabels()">clear all classes</button><br>
+  </p>
+  <br/>
+  <br/>
+
+  <!-- save or load prediction model -->
+  <div  class="trainingsView" ><b> save or load prediction model  </b></div>
+  <p>
+    <button class="debugButton" onclick="saveModel()">save</button>
+    <button id="load" class="debugButton" onclick="loadDataset('model')">Load Dataset</button>
+    <br>
+  </p>
+
   <!--- Trainings view  end -->
-
-
-
-
-
   </div>
 
+  
 
   <!--- debug view -->
   <p id="frameRate" class="debugText hiddenByDefault" style="top:1vw;">frameRate</p><br />

@@ -18,7 +18,6 @@
  */
 
 
-
 // prints debug information to the console
 var consoleDebug = true;
 
@@ -32,10 +31,12 @@ var poseDebugDraw = true;
 // video input container 
 var video;
 
+
 // Create a KNN classifier
 var knnClassifier = ml5.KNNClassifier();
 let poseNet;
 let poses = [];
+
 
 // set options for poseNet (single detection)
 let poseNetOptions = {
@@ -50,6 +51,7 @@ let poseNetOptions = {
 
 }
 
+
 // p5 canvas size
 var canvasW = 640; // 1280;  // 
 var canvasH = 480; // 970; // 120
@@ -58,24 +60,27 @@ var canvasH = 480; // 970; // 120
 var cameraResW = 640;  // 
 var cameraResH = 480; // 120
 
-var selectedPosStrokeWeight = 6;
-
 // the canvas object
 var cnv;
 var videoCanvas;
 
+
 // workflow bools
 var doPrediction = false;
 var waitingForResult = false;
-var isFreaze = false; 
+
 
 // who is in the middle
 var selectedPosId = 0;
+
+var selectedPosStrokeWeight = 6;
+
 
 // vars for framerate count
 var lastMillis = 0;
 var frameRateCounter = 0; 
 var frameRateCount =  0;
+
 
 /////////////Mode 1 KNN Model
 // prediction class IDs 
@@ -96,7 +101,6 @@ var loopFrameCount = 0;
 var trainingClass;
 var doTraining = false;
 var videoIsRunning = false;
-
 
 // thershold for pose score used for training
 var trainingPoseScoreThreshold = 0.70;
@@ -123,7 +127,6 @@ function setup() {
 
   if(consoleDebug) console.log("init posNet");
   initPoseNet();
-
   
   if(drawDomDebug){
     $(".debugText").each(function(){

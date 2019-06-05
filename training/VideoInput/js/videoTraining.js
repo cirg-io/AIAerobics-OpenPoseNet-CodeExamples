@@ -25,16 +25,6 @@ function bindTrainingInput(){
   
 }
 
-function showOverlayForTraining(){
-  var e = document.getElementById("overlayClass");
-  var selectedClass = e.options[e.selectedIndex].value;
-  if(selectedClass != 0){
-    nextOverLay(selectedClass);
-  } else {
-    $('#frontImg').fadeOut(800);
-  }
-}
-
 function startVideoTraingingFormPrevDefinedVid(){
   
  // trainingVideoSource = _scr;
