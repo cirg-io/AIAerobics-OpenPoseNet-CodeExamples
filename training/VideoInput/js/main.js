@@ -299,188 +299,34 @@ function getCenterPos(){
 
 function drawSelectedPose(_selectedPos){
   let thePose = poses[_selectedPos];
-
-  // making dynamic mid values available outside for-loop
-  let midShouldersX;
-  let midShouldersY;
-  let midHipsX;
-  let midHipsY;
-
+  let pose = thePose.pose;
+  
   //draw the  keypoints 
-  /*let pose = thePose.pose;
-  fill(255, 0, 0);
+  fill(255, 82, 30);
   noStroke();   
   for (let j = 0; j < pose.keypoints.length; j++) {
     // A keypoint is an object describing a body part (like rightArm or leftShoulder)
     let keypoint = pose.keypoints[j];
     //console.log(pose.keypoints[j].part)
     // Only draw an ellipse is the pose probability is bigger than 0.2
-    if (keypoint.score > 0.2) {
-      
+    if (keypoint.score > 0.2) {    
       ellipse(keypoint.position.x, keypoint.position.y, 10, 10);      
     }
   }
-  */
-  let skeleton = thePose.skeleton;
 
+  //draw the  skeleton
+  let skeleton = thePose.skeleton;
   noFill();
 
-  // change skeleton color from white to red if person matches the pose
-  if (conf === 100) {
-    stroke(255, 82, 30);
-  } else {
-    stroke(255, 255, 255);
-  };
+  stroke(255, 82, 30);
   strokeWeight(selectedPosStrokeWeight);  
-  // For every skeleton, loop through all body connections
+
   for (let j = 0; j < skeleton.length; j++) {
     let partA = skeleton[j][0];
     let partB = skeleton[j][1];
-
-    
-  if(videoIsRunning){
-      // draw stright lines 
-      let xa = (partA.position.x * (canvasW / cameraResW));
-      let xb = (partB.position.x * (canvasW / cameraResW));
-      let ya = (partA.position.y * (canvasW / cameraResW));
-      let yb = (partB.position.y * (canvasW / cameraResW));
-      line(xa, ya, xb, yb);
-    
-    } else {
-      // draw wiggly lines
-      // scale coordinates to canvas resolution
-      let xa = (partA.position.x * (canvasW / cameraResW));
-      let xb = (partB.position.x * (canvasW / cameraResW));
-      let ya = (partA.position.y * (canvasW / cameraResW));
-      let yb = (partB.position.y * (canvasW / cameraResW));
-        
-      // get center point of vertex
-      let halfX = (xa + xb) / 2;
-      let halfY = (ya + yb) / 2;
-      // get 1/3 point of vertex
-      let oneThirdX = ((0.66 * xa) + (0.33 * xb));
-      let oneThirdY = ((0.66 * ya) + (0.33 * yb));
-      // get 3/4 point of vertex
-      let twoThirdsX = ((0.33 * xa) + (0.66 * xb));
-      let twoThirdsY = ((0.33 * ya) + (0.66 * yb));
-      //get 1/4 point of vertex
-      let oneFourthX = ((0.75 * xa) + (0.25 * xb));
-      let oneFourthY = ((0.75 * ya) + (0.25 * yb));
-      //get 3/4 point of vertex
-      let threeFourthsX = ((0.25 * xa) + (0.75 * xb));
-      let threeFourthsY = ((0.25 * ya) + (0.75 * yb));
-
-      // map class agnostic confidence to range
-      let range = map(conf, 0, 100, 30, 0);
-
-      // draw skeleton
-      // exchange default torso lines with custom torso
-      // make them lines wiggle, wiggle, wiggle
-      if(((partA.part === "leftShoulder") && (partB.part === "rightShoulder")) || ((partB.part === "leftShoulder") && (partA.part === "rightShoulder")) || ((partA.part === "leftHip") && (partB.part === "rightHip")) || ((partB.part === "leftHip") && (partA.part === "rightHip")) || ((partA.part === "leftHip") && (partB.part === "leftShoulder")) || ((partB.part === "leftHip") && (partA.part === "leftShoulder")) || ((partA.part === "rightHip") && (partB.part === "rightShoulder")) || ((partB.part === "rightHip") && (partA.part === "rightShoulder"))) {
-        if(((partA.part === "leftShoulder") && (partB.part === "rightShoulder")) || ((partB.part === "leftShoulder") && (partA.part === "rightShoulder"))){
-          // draw left collar
-          beginShape();
-          // draw vertex starting point
-          curveVertex(xa, ya);
-          curveVertex(xa, ya);
-          // draw 1/4 vertex control point
-          curveVertex(random(oneFourthX - range, oneFourthX + range), random(oneFourthY - range, oneFourthY + range));
-          curveVertex(random(oneFourthX - range, oneFourthX + range), random(oneFourthY - range, oneFourthY + range));
-          // draw vertex endpoint
-          curveVertex(halfX, halfY);
-          curveVertex(halfX, halfY);
-          endShape(); 
-
-          //draw right collar
-          beginShape();
-          // draw vertex starting point
-          curveVertex(xb, yb);
-          curveVertex(xb, yb);
-          // draw 3/4 vertex control point
-          curveVertex(random(threeFourthsX - range, threeFourthsX + range), random(threeFourthsY - range, threeFourthsY + range));
-          curveVertex(random(threeFourthsX - range, threeFourthsX + range), random(threeFourthsY - range, threeFourthsY + range));
-          // draw vertex endpoint
-          curveVertex(halfX, halfY);
-          curveVertex(halfX, halfY);
-          endShape(); 
-            
-          //get mid point between shoulders
-          midShouldersX = (xa + xb) / 2;
-          midShouldersY = (ya + yb) / 2;
-            
-        } else if(((partA.part === "leftHip") && (partB.part === "rightHip")) || ((partA.part === "leftHip") && (partB.part === "rightHip"))){
-          // draw left hips
-          beginShape();
-          // draw vertex starting point
-          curveVertex(xa, ya);
-          curveVertex(xa, ya);
-          // draw 1/4 vertex control point
-          curveVertex(random(oneFourthX - range, oneFourthX + range), random(oneFourthY - range, oneFourthY + range));
-          curveVertex(random(oneFourthX - range, oneFourthX + range), random(oneFourthY - range, oneFourthY + range));
-          // draw vertex endpoint
-          curveVertex(halfX, halfY);
-          curveVertex(halfX, halfY);
-          endShape(); 
-
-          //draw right hips
-          beginShape();
-          // draw vertex starting point
-          curveVertex(xb, yb);
-          curveVertex(xb, yb);
-          // draw 3/4 vertex control point
-          curveVertex(random(threeFourthsX - range, threeFourthsX + range), random(threeFourthsY - range, threeFourthsY + range));
-          curveVertex(random(threeFourthsX - range, threeFourthsX + range), random(threeFourthsY - range, threeFourthsY + range));
-          // draw vertex endpoint
-          curveVertex(halfX, halfY);
-          curveVertex(halfX, halfY);
-          endShape(); 
-
-          // get mid point between Hips
-          midHipsX = (xa + xb) / 2;
-          midHipsY = (ya + yb) / 2;
-
-          // get 1/3 point of spine vertex
-          let oneThirdSpineX = ((0.66 * midShouldersX) + (0.33 * midHipsX));
-          let oneThirdSpineY = ((0.66 * midShouldersY) + (0.33 * midHipsY));
-          // get 3/4 point of Spine vertex
-          let twoThirdsSpineX = ((0.33 * midShouldersX) + (0.66 * midHipsX));
-          let twoThirdsSpineY = ((0.33 * midShouldersY) + (0.66 * midHipsY));
-
-          // draw spine
-          beginShape();
-          // draw vertex starting point
-          curveVertex(midShouldersX, midShouldersY);
-          curveVertex(midShouldersX, midShouldersY);
-          // draw 1/3 vertex control point
-          curveVertex(random(oneThirdSpineX - range, oneThirdSpineX + range), random(oneThirdSpineY - range, oneThirdSpineY + range));
-          curveVertex(random(oneThirdSpineX - range, oneThirdSpineX + range), random(oneThirdSpineY - range, oneThirdSpineY + range));
-          // draw 3/4 vertex control point
-          curveVertex(random(twoThirdsX - range, twoThirdsSpineX + range), random(twoThirdsSpineY - range, twoThirdsSpineY + range));
-          curveVertex(random(twoThirdsX - range, twoThirdsSpineX + range), random(twoThirdsSpineY - range, twoThirdsSpineY + range));
-          // draw vertex endpoint
-          curveVertex(midHipsX, midHipsY);
-          curveVertex(midHipsX, midHipsY);
-          endShape();
-        }
-      }
-      else {
-        beginShape();
-        // draw vertex starting point
-        curveVertex(xa, ya);
-        curveVertex(xa, ya);
-        // draw 1/3 vertex control point
-        curveVertex(random(oneThirdX - range, oneThirdX + range), random(oneThirdY - range, oneThirdY + range));
-        curveVertex(random(oneThirdX - range, oneThirdX + range), random(oneThirdY - range, oneThirdY + range));
-        // draw 3/4 vertex control point
-        curveVertex(random(twoThirdsX - range, twoThirdsX + range), random(twoThirdsY - range, twoThirdsY + range));
-        curveVertex(random(twoThirdsX - range, twoThirdsX + range), random(twoThirdsY - range, twoThirdsY + range));
-        // draw vertex endpoint
-        curveVertex(xb, yb);
-        curveVertex(xb, yb);
-        endShape(); 
-      }
-    }
+    line(partA.position.x, partA.position.y, partB.position.x, partB.position.y);
   }
+  
 }
 
 
