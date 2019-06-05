@@ -35,11 +35,6 @@ var poseDebugDraw = true;
 // use the most centered pose for prediction and training 
 useMostCenteredPose = true;
 
-
-// video input container 
-var video;
-
-
 // p5 canvas size
 var canvasW = 640; // 1280;  // 
 var canvasH = 480; // 970; // 120
@@ -50,7 +45,8 @@ var cameraResH = 480; // 120
 
 // the canvas object
 var cnv;
-var videoCanvas;
+// video capture object 
+var video;
 
 
 ////// openPoseNetVars
@@ -59,15 +55,15 @@ let poses = [];
 
 // set options for poseNet (single detection)
 let poseNetOptions = {
-  imageScaleFactor: 0.1,
+  imageScaleFactor: 0.2,
   outputStride: 8,
-  flipHorizontal: true,
+  flipHorizontal: false,
   minConfidence: 0 ,
   maxPoseDetections: 0,
   //scoreThreshold: 0,
   //nmsRadius: 20,
-  detectionType: 'multi',    multiplier: 0.5,// doesn't work 
-
+  detectionType: 'multi',
+  multiplier: 0.5,
 }
 
 // who is in the middle
@@ -154,9 +150,6 @@ function resetConfLevels(){
 
 
 function initCamera(){
-   // --> desktop <--
-  //videoCanvas = createCanvas(cameraResW, cameraResH);
-  //videoCanvas.parent('videoContainer');
   video = createCapture(VIDEO);
   video.size(cameraResW, cameraResH);
   video.hide();  
@@ -164,7 +157,7 @@ function initCamera(){
 
 function initCanvas(){
   cnv = createCanvas(canvasW, canvasH);
-  pixelDensity(1);  // otherwise we get gif export problems with retina displays
+  pixelDensity(1);
   cnv.style("z-index", "-1");
   centerCanvas(); 
 }
@@ -178,12 +171,11 @@ function initPoseNet() {
     //console.log(poseNet);
   }
 
-  // Create a new poseNet method with a single detection
-  poseNet = ml5.poseNet(video, modelReady, poseNetOptions);
+  // Create poseNet
+  poseNet = ml5.poseNet(video, poseNetOptions);
   // This sets up an event that fills the global variable "poses"
   // with an array every time new poses are detected
   poseNet.on('pose', function(results) {
-     // console.log("lklzuzukjdf");
     poses = results;
   });
 }
@@ -286,10 +278,6 @@ function getCenterPos(){
       if (keypoint.score > 0.2) {
         xPosSum += keypoint.position.x;
         xPosSumCount++;
-        // flip matrix back
-        //translate(keypoint.position.x, keypoint.position.y); // move to far corner
-        //text(keypoint.part,0,0);
-        //text(keypoint.position.x,0,0);
         
       }
     }
@@ -362,17 +350,8 @@ function drawKeypoints(_selectedPos)  {
         //console.log(pose.keypoints[j].part)
         // Only draw an ellipse is the pose probability is bigger than 0.2
         if (keypoint.score > 0.2) {
-          ellipse(keypoint.position.x, keypoint.position.y, 5, 5);      
-
-          // flip matrix back for text
-          /*push();
-          translate(keypoint.position.x, keypoint.position.y); // move to far corner
-          scale(-1.0,1.0);    // flip x-axis backwards
-          text(keypoint.part,0,0);
-          //text(keypoint.position.x,0,0);
-          pop ();
-          */
-
+          ellipse(keypoint.position.x, keypoint.position.y, 5, 5);     
+          
         }
       }
     }
@@ -412,7 +391,6 @@ function printFrameRate(){
     lastMillis = millis();
     var fr = frameRateCounter / frameRateCount;
     if(drawDomDebug)document.getElementById("frameRate").innerHTML = "fr: " + (int)(fr);
-    //document.getElementById("frameRate").innerHTML = "fr: " + (int)(frameRate()) ;
 
     frameRateCounter = 0;
     frameRateCount = 0;
