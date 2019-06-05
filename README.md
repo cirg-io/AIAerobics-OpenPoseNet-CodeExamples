@@ -20,6 +20,6 @@ Feel free to write to digital@space10.io with any questions, ideas or comments y
 
 ## Copyleft
 
-The examples are based on the original example by the ml5.js project: https://github.com/ml5js/ml5-examples
+The examples are based on the original examples by the ml5.js project: https://github.com/ml5js/ml5-examples
 
 Licensed under the GNU Lesser General Public License. See license.txt for further details.
