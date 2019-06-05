@@ -17,3 +17,9 @@ Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia od
 
 ## Get in touch
 Feel free to write to digital@space10.io with any questions, ideas or comments you might have.
+
+## Copyleft
+
+The examples are based on several different sources. Please see the individual example files for references.
+
+Licensed under the GNU Lesser General Public License. See license.txt for further details.
