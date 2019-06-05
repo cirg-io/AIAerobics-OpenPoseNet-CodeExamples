@@ -12,6 +12,11 @@ If you want to train on your own data, this is what you should do:
 2. ...
 3. ...
 
+### Example 1 - simple OpenPoseNet - Selecting the most Centered Pose
+A basic example on how to use OpenPoseNet for pose detecting. Selecting (Highlighting in red) the most centered pose. 
+(We added this feature to get clean training data and don't ending up training our KNN classifier on background noise)
+
+
 ## Why learning from machines?
 Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
 
