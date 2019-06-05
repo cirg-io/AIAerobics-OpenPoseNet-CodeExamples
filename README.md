@@ -13,8 +13,7 @@ About the Project
 
 ## Getting started
 
-!Please run the Examples in Chrome or Safari!
-
+(Please run the Examples in Chrome or Safari)
 
 ### Example 1 (simpleOpenPoseExample) - OpenPoseNet Example, selecting the most Centered Pose
 A basic example on how to use OpenPoseNet for pose detecting. Selecting (Highlighting in red) the most centered pose. 
