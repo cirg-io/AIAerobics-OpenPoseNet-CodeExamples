@@ -15,18 +15,18 @@ About the Project
 
 (Please run the Examples in Chrome or Safari)
 
-### Example 1 (simpleOpenPoseExample) - OpenPoseNet Example, selecting the most Centered Pose
+###  01 - simpleOpenPoseExample - OpenPoseNet Example, selecting the most Centered Pose
 A basic example on how to use OpenPoseNet for pose detection. Selecting the most centered pose (Highlighted in red). 
 (We added this feature to get clean training data and don't end up training our KNN classifier on background noise)
 
-### Example 2 (trainingWithCameraInput) - Training KNN classifier Classes with WebCam input.
+### 02 - trainingWithCameraInput - Training KNN classifier Classes with WebCam input.
 Simple interface for training your KNN classifier model with real time webcam data. Easy way to get started and test your ideas.
 
 #### Notes: 
 - You should always train a default class with random movements. We recommend to use class »Z« for this. 
 - Just train as many classes as you need, the emtpy ones will not be taken into consideration. Classes are hardcoded, but you can easily change names and quantity in the code.
 
-### Example 3 (trainingWithVideoInput) - Training KNN classifier Classes with video files as input.
+### 03 trainingWithVideoInput - Training KNN classifier Classes with video files as input.
 Enables you to train your KNN classifier model with pre-recorded video files. So you can easily try out different settings and combinations for the same input data. (No need to dance in front of the camera all day long ;) 
 
 #### Notes: 
