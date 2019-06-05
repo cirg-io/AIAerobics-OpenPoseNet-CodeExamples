@@ -2,11 +2,15 @@
 ![GIF compilation of the makers](https://space10.io/content/uploads/2019/06/learning-from-machines.gif)
 
 # learning-from-machines-examples
+We put togehter some Examples on how to use OpenPoseNet and an KNN classifier. All sketches are basic html and js using processing.js (https://github.com/ml5js/ml5-examples) and the ml5.js libraray (https://github.com/ml5js)
 
-Introduction: What is it.
+
+## Intelligence of SiIly Walks?
+About the real Project
+
+
 
 ## Getting started
-If you want to train on your own data, this is what you should do:
 
 1. ...
 2. ...
@@ -16,9 +20,6 @@ If you want to train on your own data, this is what you should do:
 A basic example on how to use OpenPoseNet for pose detecting. Selecting (Highlighting in red) the most centered pose. 
 (We added this feature to get clean training data and don't ending up training our KNN classifier on background noise)
 
-
-## Why learning from machines?
-Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
 
 ## Get in touch
 Feel free to write to digital@space10.io with any questions, ideas or comments you might have.
