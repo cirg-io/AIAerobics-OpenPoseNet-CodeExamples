@@ -203,14 +203,14 @@ function draw() {
       stopVideo();
     }
   }
-    translate(width,0);
-    scale(-1.0,1.0);
-    //draw image
-    if(video != null) { 
-      tint(255,255);
-      image(video, 0, 0, width, height);
-      filter(GRAY);
-    }
+  translate(width,0);
+  scale(-1.0,1.0);
+  //draw image
+  if(video != null) { 
+    tint(255,255);
+    image(video, 0, 0, width, height);
+    filter(GRAY);
+  }
   
   //if there are poses available 
   if( poses.length > 0) {    
