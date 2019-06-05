@@ -11,6 +11,10 @@
  * Example Using openPosNet and ml5.js in p5.js 
  * Based on ml5.js examples: https://github.com/ml5js/ml5-examples  
  * 
+ * Licensed under the GNU Lesser General Public License. See license.txt for further details.
+ * 
+ * CIRG + Space10 | Summer 2019 |
+ * 
  */
 
 
