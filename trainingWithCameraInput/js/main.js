@@ -36,10 +36,6 @@ var poseDebugDraw = true;
 useMostCenteredPose = true;
 
 
-// video input container 
-var video;
-
-
 // Create a KNN classifier
 var knnClassifier = ml5.KNNClassifier();
 let poseNet;
