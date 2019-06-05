@@ -203,6 +203,8 @@ function draw() {
       stopVideo();
     }
   }
+
+  //draw the camera input
   translate(width,0);
   scale(-1.0,1.0);
   //draw image
@@ -220,6 +222,7 @@ function draw() {
     } else {
       selectedPosId = 0;
     }
+
     drawSelectedPose(selectedPosId);
     if(poseDebugDraw)drawOtherPoses(selectedPosId);
     
@@ -236,6 +239,7 @@ function draw() {
     }
     //// trainings draw end
 
+    // if we are ready for a new prediction : )
     if(doPrediction == true && waitingForResult == false){
       classify();
     }
