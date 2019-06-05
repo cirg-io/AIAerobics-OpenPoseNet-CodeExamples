@@ -15,8 +15,7 @@ About the Project
 
 (Please run the Examples in Chrome or Safari)
 
-### Example 1 (simpleOpenPoseExample)
-#### OpenPoseNet Example, selecting the most Centered Pose
+### Example 1 (simpleOpenPoseExample) OpenPoseNet Example, selecting the most Centered Pose
 A basic example on how to use OpenPoseNet for pose detection. Selecting the most centered pose (Highlighted in red). 
 (We added this feature to get clean training data and don't end up training our KNN classifier on background noise)
 
