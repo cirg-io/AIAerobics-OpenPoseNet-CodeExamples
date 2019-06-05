@@ -21,17 +21,21 @@ A basic example on how to use OpenPoseNet for pose detecting. Selecting (Highlig
 (We added this feature to get clean training data and don't ending up training our KNN classifier on background noise)
 
 ### Example 2 (trainingWithCameraInput) - Training KNN classifier Classes with WebCam input.
+Simple interface for training your KNN classifier model with real time webcam data. Easy way to get started and test your ideas.
 
 #### Notes: 
 - You should allways train an default class with random movments. we recomand to use class »Z« for this. 
-- Just train as many classes as you need, the emtpy ones will not been taken into considereation. Classes are Hardcoded, you can easily change Names and quantity with in the code.
+- Just train as many classes as you need, the emtpy ones will not been taken into considereation. Classes are hardcoded, but you can easily change Names and quantity in the code.
 
 ### Example 3 (simpleOpenPoseExample) - OpenPoseNet Example, selecting the most Centered Pose
-A basic example on how to use OpenPoseNet for pose detecting. Selecting (Highlighting in red) the most centered pose. 
-(We added this feature to get clean training data and don't ending up training our KNN classifier on background noise)
+Enables you to train your KNN classifier model with pre-recorded video files. So you can easily try out different setting and combination for the same input data. (No need to dance in front of the camera allday long ;) 
+
+#### Notes: 
+- You should allways train an default class with random movments. we recomand to use class »Z« for this. 
+- Just train as many classes as you need, the emtpy ones will not been taken into considereation. Classes are hardcoded, but you can easily change Names and quantity in the code.
 
 ### Example 4 (poseClassesPrediction) - loading a pretrained model with 3 poses and predicting the representet pose
-
+todo : /
 
 
 
