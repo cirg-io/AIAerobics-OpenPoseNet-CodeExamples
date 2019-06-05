@@ -35,12 +35,22 @@ var poseDebugDraw = true;
 // use the most centered pose for prediction and training 
 useMostCenteredPose = true;
 
+// p5 canvas size
+var canvasW = 640; // 1280;  // 
+var canvasH = 480; // 970; // 120
 
-// Create a KNN classifier
-var knnClassifier = ml5.KNNClassifier();
+// p5 camera resolution
+var cameraResW = 640;  // 
+var cameraResH = 480; // 120
+
+// the canvas object
+var cnv;
+var videoCanvas;
+
+
+////// openPoseNetVars
 let poseNet;
 let poses = [];
-
 
 // set options for poseNet (single detection)
 let poseNetOptions = {
@@ -55,38 +65,17 @@ let poseNetOptions = {
 
 }
 
-
-// p5 canvas size
-var canvasW = 640; // 1280;  // 
-var canvasH = 480; // 970; // 120
-
-// p5 camera resolution
-var cameraResW = 640;  // 
-var cameraResH = 480; // 120
-
-// the canvas object
-var cnv;
-var videoCanvas;
-
-
-// workflow bools
-var doPrediction = false;
-var waitingForResult = false;
-
-
 // who is in the middle
 var selectedPosId = 0;
 
 var selectedPosStrokeWeight = 6;
 
 
-// vars for framerate count
-var lastMillis = 0;
-var frameRateCounter = 0; 
-var frameRateCount =  0;
+///////////// KNN Model
+// Create a KNN classifier
+var knnClassifier = ml5.KNNClassifier();
 
 
-/////////////Mode 1 KNN Model
 // prediction class IDs 
 var classId = ['Z', 'A', 'B', 'C', 'D', 'E', 'F', 'G'];   // Z is the base class
 // confidence levels for each class to be accesd globaly 
@@ -94,6 +83,16 @@ var confLevels = [];
 
 // class agnostic confidence level
 let conf = 0;
+
+// workflow bools
+var doPrediction = false;
+var waitingForResult = false;
+
+
+// vars for framerate count
+var lastMillis = 0;
+var frameRateCounter = 0; 
+var frameRateCount =  0;
 
 
 function preload() {
