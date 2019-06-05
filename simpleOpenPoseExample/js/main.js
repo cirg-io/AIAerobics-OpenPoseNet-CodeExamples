@@ -17,7 +17,7 @@
  * 
  * -------------------------------------
  *
- * This Example is training poses into KNN-Classifier Classes with Web-Cam input
+ * OpenPoseNet example selecting the center pose 
  * 
  */
 
@@ -35,7 +35,6 @@ var poseDebugDraw = true;
 // use the most centered pose for prediction and training 
 useMostCenteredPose = true;
 
-
 // p5 canvas size
 var canvasW = 640; // 1280;  // 
 var canvasH = 480; // 970; // 120
@@ -47,6 +46,8 @@ var cameraResH = 480; // 120
 // the canvas object
 var cnv;
 var videoCanvas;
+// the capture object 
+var video;
 
 ////// openPoseNetVars
 let poseNet;
@@ -107,9 +108,7 @@ function setup() {
 
 
 function initCamera(){
-   // --> desktop <--
-  //videoCanvas = createCanvas(cameraResW, cameraResH);
-  //videoCanvas.parent('videoContainer');
+
   video = createCapture(VIDEO);
   video.size(cameraResW, cameraResH);
   video.hide();  
@@ -117,7 +116,7 @@ function initCamera(){
 
 function initCanvas(){
   cnv = createCanvas(canvasW, canvasH);
-  pixelDensity(1);  // otherwise we get gif export problems with retina displays
+  pixelDensity(1);
   cnv.style("z-index", "-1");
   centerCanvas(); 
 }
@@ -131,12 +130,11 @@ function initPoseNet() {
     //console.log(poseNet);
   }
 
-  // Create a new poseNet method with a single detection
+  // Create poseNet
   poseNet = ml5.poseNet(video, poseNetOptions);
   // This sets up an event that fills the global variable "poses"
   // with an array every time new poses are detected
   poseNet.on('pose', function(results) {
-     // console.log("lklzuzukjdf");
     poses = results;
   });
 }
@@ -211,11 +209,7 @@ function getCenterPos(){
       if (keypoint.score > 0.2) {
         xPosSum += keypoint.position.x;
         xPosSumCount++;
-        // flip matrix back
-        //translate(keypoint.position.x, keypoint.position.y); // move to far corner
-        //text(keypoint.part,0,0);
-        //text(keypoint.position.x,0,0);
-        
+
       }
     }
     var xPosAve = xPosSum / xPosSumCount;
@@ -271,7 +265,6 @@ function drawOtherPoses(_selectedPos){
 }
 
 
-// A function to draw ellipses over the detected keypoints
 function drawKeypoints(_selectedPos)  {
   fill(255, 255, 0);
   noStroke();
@@ -289,22 +282,12 @@ function drawKeypoints(_selectedPos)  {
         if (keypoint.score > 0.2) {
           ellipse(keypoint.position.x, keypoint.position.y, 5, 5);      
 
-          // flip matrix back for text
-          /*push();
-          translate(keypoint.position.x, keypoint.position.y); // move to far corner
-          scale(-1.0,1.0);    // flip x-axis backwards
-          text(keypoint.part,0,0);
-          //text(keypoint.position.x,0,0);
-          pop ();
-          */
-
         }
       }
     }
   }
 }
 
-// A function to draw the skeletons
 function drawSkeleton(_selectedPos) {
   
   stroke(255,255, 0);
@@ -337,7 +320,6 @@ function printFrameRate(){
     lastMillis = millis();
     var fr = frameRateCounter / frameRateCount;
     if(drawDomDebug)document.getElementById("frameRate").innerHTML = "fr: " + (int)(fr);
-    //document.getElementById("frameRate").innerHTML = "fr: " + (int)(frameRate()) ;
 
     frameRateCounter = 0;
     frameRateCount = 0;
