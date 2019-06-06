@@ -1,15 +1,14 @@
 
 ![GIF compilation of the makers](https://space10.io/content/uploads/2019/06/learning-from-machines.gif)
 
-# learning-from-machines-examples
+# Examples
 We've put together some examples on how to use OpenPoseNet and a KNN classifier. All sketches are basic html and js using processing.js (http://processingjs.org/) and the ml5.js library (https://github.com/ml5js). 
 
 The repository includes examples for training KNN classifier Classes with your own poses to create a prediction model. The prediction models can be saved and later loaded into your application.
 
-## The Intelligence of Silly Walks (IoSw)?
+## AI Aerobics: Moving with Machines
 
 About the Project
-
 
 ## Getting started
 
