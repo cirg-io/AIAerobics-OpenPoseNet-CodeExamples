@@ -136,6 +136,6 @@ function updateCounts() {
   var counts = knnClassifier.getCountByLabel();
 
   for (let e = 0; e < classId.length; e++) {
-     if(trainingView)select('#example'+classId[e]).html(counts[classId[e]] || 0);
+     select('#example'+classId[e]).html(counts[classId[e]] || 0);
   }
 }

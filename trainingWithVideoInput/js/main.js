@@ -31,7 +31,6 @@ var drawDomDebug = true;
 // draw all the not selected poses
 var poseDebugDraw = true;
 
-
 // use the most centered pose for prediction and training 
 useMostCenteredPose = true;
 
@@ -100,7 +99,7 @@ var doTraining = false;
 var videoIsRunning = false;
 
 // thershold for pose score used for training
-var trainingPoseScoreThreshold = 0.70;
+var trainingPoseScoreThreshold = 0.65;
 
 
 
