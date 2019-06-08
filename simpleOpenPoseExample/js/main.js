@@ -1,12 +1,12 @@
 
-/* LEARNING FROM MACHINES - EXAMPLE CODE 
- * --------------------------------------
+/* AI Aerobics: Moving with Machines - EXAMPLE CODE 
+ * -------------------------------------------------
  *
- * Code Snippets created during the Intelligence of SiIly Walks project 
+ * Code Snippets created during the »AI Aerobics: Moving with Machines« project 
  * by CIRG (https://cirg.io) and Space10 (https://space10.io/)
  *  
  * Project URL:
- * Code Snippet Repository:  
+ * Code Snippet Repository: https://github.com/cirg-io/AIAerobics-examples
  *  
  * Example Using openPosNet and ml5.js in p5.js 
  * Based on ml5.js examples: https://github.com/ml5js/ml5-examples  
@@ -15,7 +15,7 @@
  * 
  * CIRG + Space10 | Summer 2019 |
  * 
- * -------------------------------------
+ * -------------------------------------------------
  *
  * OpenPoseNet example selecting the center pose 
  * 
