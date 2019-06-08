@@ -21,10 +21,6 @@
  * 
  */
 
-
-// prints debug information to the console
-var consoleDebug = true;
-
 // debug prints to the DOM
 var drawDomDebug = true;
 
@@ -55,17 +51,17 @@ let poses = [];
 
 // set options for poseNet (single detection)
 let poseNetOptions = {
-  imageScaleFactor: 0.2, // 0.2-1
+  imageScaleFactor: 0.4,
   outputStride: 8,
   flipHorizontal: false,
-  minConfidence: 0,
+  minConfidence: 0.4 ,
   maxPoseDetections: 0,
   //scoreThreshold: 0,
   //nmsRadius: 20,
   detectionType: 'multi',
-  multiplier: 0.5, 
-
+  multiplier: 0.5,
 }
+
 
 // who is in the middle
 var selectedPosId = 0;
@@ -87,15 +83,15 @@ function preload() {
 
 function setup() {
 
-  if(consoleDebug) console.log("start setup");
+  console.log("start setup");
 
-  if(consoleDebug) console.log("init camera");
+  console.log("init camera");
   initCamera();  
  
-  if(consoleDebug) console.log("init display canvas");
+  console.log("init display canvas");
   initCanvas();
 
-  if(consoleDebug) console.log("init posNet");
+   console.log("init posNet");
   initPoseNet();
 
   if(drawDomDebug){
