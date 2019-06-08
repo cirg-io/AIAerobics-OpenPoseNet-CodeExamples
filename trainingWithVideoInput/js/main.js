@@ -54,10 +54,10 @@ let poses = [];
 
 // set options for poseNet (single detection)
 let poseNetOptions = {
-  imageScaleFactor: 0.2,
+  imageScaleFactor: 0.4,
   outputStride: 8,
   flipHorizontal: false,
-  minConfidence: 0 ,
+  minConfidence: 0.4 ,
   maxPoseDetections: 0,
   //scoreThreshold: 0,
   //nmsRadius: 20,
@@ -99,7 +99,7 @@ var doTraining = false;
 var videoIsRunning = false;
 
 // thershold for pose score used for training
-var trainingPoseScoreThreshold = 0.65;
+var trainingPoseScoreThreshold = 0.70;
 
 
 
