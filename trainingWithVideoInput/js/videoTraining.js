@@ -67,7 +67,7 @@ function startVideoTrainging(_scr, _class){
 
 function initTraining(_class){
 
- if(consoleDebug)console.log("startTraining" );
+  console.log("startTraining" );
   trainingClass = _class;
   doTraining = true;
 
@@ -79,7 +79,7 @@ function initTrainingVideo(_scr) {
 
   //if(trainingFilesCount < trainingFiles.length){
   // --> desktop <--
-  if(consoleDebug)console.log("init vidoe:" + _scr)
+  console.log("init vidoe:" + _scr)
 
   video = createVideo(_scr);
   video.size(cameraResW, cameraResH);
@@ -101,7 +101,7 @@ function stopVideo(){
   doTraining = false;
   video.stop();
   if(drawDomDebug)select('#status').html('Video is Done! Stoped Training');
-  if(consoleDebug) console.log("Video is Done! Stoped Training");
+   console.log("Video is Done! Stoped Training");
 }
 
 function reInitCamera(){

@@ -21,14 +21,10 @@
  * 
  */
 
-
-// prints debug information to the console
-var consoleDebug = true;
-
 // debug prints to the DOM
 var drawDomDebug = true;
 
-// draw all the not selected poses
+// draw all the not selected trainingPoseScoreThreshold
 var poseDebugDraw = true;
 
 // use the most centered pose for prediction and training 
@@ -116,18 +112,18 @@ function preload() {
 
 function setup() {
 
-  if(consoleDebug) console.log("start setup");
+  console.log("start setup");
 
   ////// init confLevel array
   resetConfLevels();
 
-  if(consoleDebug) console.log("init camera");
+  console.log("init camera");
   initCamera();  
  
-  if(consoleDebug) console.log("init display canvas");
+  console.log("init display canvas");
   initCanvas();
 
-  if(consoleDebug) console.log("init posNet");
+  console.log("init posNet");
   initPoseNet();
   
   if(drawDomDebug){
@@ -219,11 +215,11 @@ function draw() {
     // trainings draw !!!!
     if(doTraining){
       if(poses[selectedPosId].pose.score >= trainingPoseScoreThreshold){
-        if(consoleDebug)console.log("adding class: " + trainingClass);
+        console.log("adding class: " + trainingClass);
         addExample(trainingClass);
-        //if(consoleDebug)console.log("videoFrameCount" + videoFrameCount);
+        //console.log("videoFrameCount" + videoFrameCount);
       } else {
-         // if(consoleDebug)console.log(" not adding class, score to low");
+         // console.log(" not adding class, score to low");
       }
       videoFrameCount++;
     }
