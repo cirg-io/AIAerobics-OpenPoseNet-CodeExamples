@@ -55,15 +55,15 @@ let poses = [];
 
 // set options for poseNet (single detection)
 let poseNetOptions = {
-  imageScaleFactor: 0.2,
+  imageScaleFactor: 0.4,
   outputStride: 8,
   flipHorizontal: false,
-  minConfidence: 0 ,
+  minConfidence: 0.4 ,
   maxPoseDetections: 0,
   //scoreThreshold: 0,
   //nmsRadius: 20,
-  detectionType: 'multi',    
-   multiplier: 0.5,
+  detectionType: 'multi',
+  multiplier: 0.5,
 }
 
 // who is in the middle
