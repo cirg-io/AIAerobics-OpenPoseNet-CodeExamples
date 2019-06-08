@@ -39,14 +39,17 @@ function clearAllLabels() {
 
 function saveModel() {
   if(consoleDebug)console.log('saving knnClassifier');
-  knnClassifier.save('knn_model_' + getTimeStamp());
- if(drawDomDebug)select('#status').html('knnClassifier model saved')
+  var fileName = 'knn_model_' + getTimeStamp();
+  knnClassifier.save(fileName);
+ if(drawDomDebug)select('#status').html('knnClassifier model saved to download folder');
+ alert("model saved to download folder (" + fileName + ")");
 }
 
 function loadDataset(_name) {
   knnClassifier.load('./assets/' + _name + '.json', updateCounts);
-  if(consoleDebug)console.log('loaded knnClassifier');
+  if(consoleDebug)console.log('loaded knnClassifier from assets folder (model.json)');
   if(drawDomDebug)select('#status').html('knnClassifier model loading')
+  alert("model.json loaded from assets folder");
 }
 
 /*function loadDataset(_modelNr) {
@@ -119,7 +122,7 @@ function gotResults(err, result) {
     }
      // make results globally available
     for (let e = 0; e < classId.length; e++) {
-      if(trainingView)select('#confidence'+classId[e]).html(`${confidences[classId[e]] ? confidences[classId[e]] * 100 : 0} %`);
+      select('#confidence'+classId[e]).html(`${confidences[classId[e]] ? confidences[classId[e]] * 100 : 0} %`);
       // make results globally available
       confLevels[e] = (confidences[classId[e]] * 100);
     }  
