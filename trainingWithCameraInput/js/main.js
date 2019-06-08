@@ -1,8 +1,8 @@
 
-/* LEARNING FROM MACHINES - EXAMPLE CODE 
+/* AI Aerobics: Moving with Machines - EXAMPLE CODE 
  * --------------------------------------
  *
- * Code Snippets created during the Intelligence of SiIly Walks project 
+ * Code Snippets created during the "AI Aerobics: Moving with Machines" project 
  * by CIRG (https://cirg.io) and Space10 (https://space10.io/)
  *  
  * Project URL:
