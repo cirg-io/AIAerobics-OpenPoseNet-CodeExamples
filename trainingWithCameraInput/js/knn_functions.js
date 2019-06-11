@@ -52,13 +52,6 @@ function loadDataset(_name) {
   alert("model.json loaded from assets folder");
 }
 
-/*function loadDataset(_modelNr) {
-  knnClassifier.load('./assets/model_' + _modelNr + '.json', updateCounts);
-  console.log('loaded knnClassifier');
-  if(drawDomDebug)select('#status').html('knnClassifier model loading')
-}*/
-
-
 // Add the current frame from the video to the classifier
 function addExample(label) {
   
