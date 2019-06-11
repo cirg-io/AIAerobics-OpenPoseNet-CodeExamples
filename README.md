@@ -33,8 +33,7 @@ Enables you to train your KNN classifier model with pre-recorded video files. So
 - Just train as many classes as you need, the emtpy ones will not been taken into considereation. Classes are hardcoded, but you can easily change names and quantity in the code.
 
 ### Example 4 (poseClassesPrediction) loading a pretrained model with 3 poses and predicting the representet pose
-todo :/
-
+A Simple example, detecting if you rise your left or right arm. (class A - right Arm, class B - left arm, class Z - all other poses). Model is pre-trained with the sample videos from example 3. 
 
 
 ## Copyleft
