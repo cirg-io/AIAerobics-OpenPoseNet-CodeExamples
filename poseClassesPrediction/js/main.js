@@ -92,6 +92,12 @@ var lastMillis = 0;
 var frameRateCounter = 0; 
 var frameRateCount =  0;
 
+// vars for the visualisation
+var predictedClass = "";
+var lastPredictedClass = "";
+var classChangedMillis  = 0;  // millis des letzten changes
+var showEffect = false;
+
 
 function preload() {
 
@@ -176,9 +182,21 @@ function draw() {
   scale(-1.0,1.0);
   //draw image
   if(video != null) { 
-    tint(255,255);
-    image(video, 0, 0, width, height);
-    filter(GRAY);
+    checkForClassEffect();
+    if(predictedClass == "A" && showEffect == true){
+      tint(115, 199, 233);
+      image(video, 0, 0, width, height);
+      highLightIconA();
+    } else if(predictedClass == "B" && showEffect == true){
+       tint(143, 198, 130);
+      image(video, 0, 0, width, height);
+      highLightIconB(); 
+    } else {
+      tint(255); 
+      image(video, 0, 0, width, height);
+      filter(GRAY);
+      noHighlighIcon();
+    }
   }
   
   //if there are poses available 
@@ -206,6 +224,24 @@ function draw() {
 
 }
 
+// show highlight icon for A
+function highLightIconA(){      
+    $('#poseA').attr('src',  "assets/Figure_500hight/Figure_A_blue.png");
+    $('#poseB').attr('src',  "assets/Figure_500hight/Figure_B_white.png");   
+}
+
+// show highlight icon for B
+function highLightIconB(){      
+    $('#poseA').attr('src',  "assets/Figure_500hight/Figure_A_white.png");
+    $('#poseB').attr('src',  "assets/Figure_500hight/Figure_B_green.png");   
+}
+
+// reset icons
+function noHighlighIcon(){      
+    $('#poseA').attr('src',  "assets/Figure_500hight/Figure_A_white.png");
+    $('#poseB').attr('src',  "assets/Figure_500hight/Figure_B_white.png");   
+}
+
 
 function windowResized() {
   if(cnv != null) {
@@ -218,6 +254,23 @@ function centerCanvas() {
   var x = (windowWidth - width) / 2;
   var y = (windowHeight - height) /2; //- 50; /// 2;
   cnv.position(x, y);
+}
+
+function checkForClassEffect(){
+  
+  // if detected class changed 
+  if(predictedClass != lastPredictedClass){
+    lastPredictedClass = predictedClass;
+    classChangedMillis = millis();
+  } else {
+    // wait some time (1 sec) bevor actually change the color
+    // so we get flickering
+    if(classChangedMillis+1000 < millis()){
+      showEffect = true;
+    } else {
+      showEffect = false;
+    }
+  }
 }
 
 

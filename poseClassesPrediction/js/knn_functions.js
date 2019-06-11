@@ -70,6 +70,7 @@ function gotResults(err, result) {
     if (result.label) {
       if(drawDomDebug)select('#result').html(result.label);
       if(drawDomDebug)select('#confidence').html(`${confidences[result.label] * 100} %`);
+      predictedClass = result.label;
     }
      // make results globally available
     for (let e = 0; e < classId.length; e++) {

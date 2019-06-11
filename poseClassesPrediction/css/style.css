@@ -55,3 +55,27 @@ p {
   display: none;
 
 }
+
+
+#poseIcons{
+  position: fixed;
+  top: calc(50% - 200px);
+  left: calc(5% - 5px);
+  width: 150px;
+  height: 400px;
+  z-index: 70;
+ /*background-image: "assets/imgSet4/01.png";*/
+}
+
+.hiddenByDefault{
+  display: none;
+}
+
+/* hide grey frame before src is added to img */
+IMG[src=''], IMG:not([src])      {opacity:0;}
+
+.ImgClass{
+  position: absolute;
+  height: 50%; 
+  width: 100%;
+}
