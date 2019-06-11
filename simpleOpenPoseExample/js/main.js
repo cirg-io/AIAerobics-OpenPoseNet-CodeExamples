@@ -146,7 +146,6 @@ function draw() {
 
   //draw image
   if(video != null) { 
-    tint(255,255);
     image(video, 0, 0, width, height);
     filter(GRAY);
   }

@@ -195,7 +195,6 @@ function draw() {
   scale(-1.0,1.0);
   //draw image
   if(video != null) { 
-    tint(255,255);
     image(video, 0, 0, width, height);
     filter(GRAY);
   }
