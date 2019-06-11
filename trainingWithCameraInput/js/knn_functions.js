@@ -20,7 +20,7 @@
 
 function startPrediction(){
   doPrediction = true;  
-  if(consoleDebug)console.log('start prediction');
+  console.log('start prediction');
   if(drawDomDebug)select('#status').html('start prediction')
 }
 
@@ -38,7 +38,7 @@ function clearAllLabels() {
 }
 
 function saveModel() {
-  if(consoleDebug)console.log('saving knnClassifier');
+  console.log('saving knnClassifier');
   var fileName = 'knn_model_' + getTimeStamp();
   knnClassifier.save(fileName);
  if(drawDomDebug)select('#status').html('knnClassifier model saved to download folder');
@@ -47,14 +47,14 @@ function saveModel() {
 
 function loadDataset(_name) {
   knnClassifier.load('./assets/' + _name + '.json', updateCounts);
-  if(consoleDebug)console.log('loaded knnClassifier from assets folder (model.json)');
+  console.log('loaded knnClassifier from assets folder (model.json)');
   if(drawDomDebug)select('#status').html('knnClassifier model loading')
   alert("model.json loaded from assets folder");
 }
 
 /*function loadDataset(_modelNr) {
   knnClassifier.load('./assets/model_' + _modelNr + '.json', updateCounts);
-  if(consoleDebug)console.log('loaded knnClassifier');
+  console.log('loaded knnClassifier');
   if(drawDomDebug)select('#status').html('knnClassifier model loading')
 }*/
 
@@ -100,7 +100,7 @@ function classify() {
     knnClassifier.classify(poseArray, gotResults);
     waitingForResult = true;
   } else {
-     if(consoleDebug)console.log("no pose to classify");
+    console.log("no pose to classify");
   }
 
 }

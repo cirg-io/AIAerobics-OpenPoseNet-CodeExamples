@@ -22,9 +22,6 @@
  */
 
 
-// prints debug information to the console
-var consoleDebug = true;
-
 // debug prints to the DOM
 var drawDomDebug = true;
 
@@ -103,18 +100,18 @@ function preload() {
 
 function setup() {
 
-  if(consoleDebug) console.log("start setup");
+  console.log("start setup");
 
   ////// init confLevel array
   resetConfLevels();
 
-  if(consoleDebug) console.log("init camera");
+  console.log("init camera");
   initCamera();  
  
-  if(consoleDebug) console.log("init display canvas");
+  console.log("init display canvas");
   initCanvas();
 
-  if(consoleDebug) console.log("init posNet");
+  console.log("init posNet");
   initPoseNet();
   
   if(drawDomDebug){
