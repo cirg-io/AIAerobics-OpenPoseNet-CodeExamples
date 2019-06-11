@@ -1,0 +1,57 @@
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td {
+    padding: 0;
+    margin: 0;
+	font-size: 100%;
+	text-rendering: optimizeLegibility;
+	/*text-rendering: geometricPrecision;*/
+	-webkit-font-feature-settings: "kern" 1;
+	font-family: Helvetica, Sans-Serif;
+}
+
+
+body {
+  	background-color: #e6e5e6;
+    color:  black;
+
+  }
+
+video {
+  width: 300;
+  height: 300;
+  z-index: 1;
+}
+
+p {
+  display: inline;
+  font-size: 16px;
+}
+
+
+.debugText {
+  position: absolute;
+  right: 1vw;
+  color: #faa;
+  font-size: 1vw;
+  z-index: 100;
+
+}
+
+.debugButton {
+  margin: 6px 6px 6px 0;
+  padding: 4px;
+  font-size: 14px;
+  background-color: yellow;
+}
+
+.trainingsView{
+ /* display: none;*/
+  z-index: 200;
+}
+
+
+.hiddenByDefault{
+  display: none;
+
+}
