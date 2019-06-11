@@ -59,10 +59,10 @@ p {
 
 #poseIcons{
   position: fixed;
-  top: calc(50% - 200px);
+  top: calc(50% - 180px);
   left: calc(5% - 5px);
-  width: 150px;
-  height: 400px;
+  width: 100px;
+  height: 500px;
   z-index: 70;
  /*background-image: "assets/imgSet4/01.png";*/
 }
@@ -76,6 +76,6 @@ IMG[src=''], IMG:not([src])      {opacity:0;}
 
 .ImgClass{
   position: absolute;
-  height: 50%; 
+  height: 30%; 
   width: 100%;
 }
