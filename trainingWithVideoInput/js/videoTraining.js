@@ -5,7 +5,7 @@
  * Code Snippets created during the »AI Aerobics: Moving with Machines« project 
  * by CIRG (https://cirg.io) and Space10 (https://space10.io/)
  *  
- * Project URL:
+ * Project URL: https://ai-aerobics.space10.io/
  * Code Snippet Repository: https://github.com/cirg-io/AIAerobics-examples
  *  
  * Example Using openPosNet and ml5.js in p5.js 
