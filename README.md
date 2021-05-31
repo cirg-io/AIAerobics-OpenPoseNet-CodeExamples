@@ -10,7 +10,7 @@ The repository includes examples for training KNN classifier Classes with your o
 
 >AI Aerobics is a digital experience where you follow a machine’s instructions on how to move. Sounds simple enough, right? In fact, the poses the computer demands of you reflect what it’s learned about unique movement through reinforcement learning techniques. And not only that: they’ve also been tweaked in response to what CIRG found out about movement through talking to choreographers, yoga teachers and more. In the experiment itself, however, you don’t get that whole backstory. Instead, you get an entertaining experience where you work out like a machine says you should—and then export your routine as a GIF if you wish to.
 
-Project description --> https://space10.com/project/ai-aerobics/ | 
+Project description --> https://space10.com/project/ai-aerobics/ <br>
 Prototype website --> https://ai-aerobics.space10.io/
 
 ## Getting started
